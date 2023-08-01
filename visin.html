@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disasters Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        #container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        #disastersChartContainer {
+            width: 100%;
+            height: 400px;
+        }
+        #kesimpulan {
+            margin-top: 20px;
+        }
+        .kesimpulan-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Penyebab Kematian di Indonesia berdasarkan Tahun dan Jenis Bencana</h1>
+
+        <div id="disastersChartContainer">
+            <canvas id="disastersChart"></canvas>
+        </div>
+
+        <div id="kesimpulan">
+            <div class="kesimpulan-item">
+                <strong>Kesimpulan nomor 1:</strong>
+                <p>Jumlah bencana alam mengalami lonjakan pada tahun 2004, kemungkinan akibat adanya bencana besar. Setelah tahun 2004, jumlah bencana alam cenderung menurun dan tetap rendah.</p>
+            </div>
+
+            <div class="kesimpulan-item">
+                <strong>Kesimpulan nomor 2:</strong>
+                <p>Jumlah bencana non alam dan penyakit bervariasi dari tahun ke tahun, dengan peningkatan yang signifikan pada tahun 2005, 2006, dan 2021. Jumlah kasus terlapor tertinggi terjadi pada tahun 2021.</p>
+            </div>
+
+            <div class="kesimpulan-item">
+                <strong>Kesimpulan nomor 3:</strong>
+                <p>Jumlah bencana sosial relatif rendah sepanjang tahun, dengan beberapa puncak pada tahun 2006 dan 2009.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data provided
+        const years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022];
+        const bencanaAlam = [0, 0, 0, 0, 166698, 1973, 6960, 562, 262, 1447, 1306, 172, 174, 0, 0, 215, 442, 169, 3739, 352, 236, 583, 0];
+        const bencanaNonAlam = [339, 324, 435, 633, 54046, 121063, 120104, 88713, 106035, 31661, 37922, 1967, 1595, 1145, 1199, 2096, 2156, 875, 1212, 14338, 37823, 138519, 12876];
+        const bencanaSosial = [0, 0, 0, 0, 0, 0, 1, 0, 1, 16, 33, 34, 65, 0, 0, 45, 26, 0, 25, 7, 4, 4, 0];
+
+        // Create the chart
+        const ctx = document.getElementById('disastersChart').getContext('2d');
+        const disastersChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: 'Bencana Alam',
+                        data: bencanaAlam,
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true,
+                    },
+                    {
+                        label: 'Bencana Non Alam dan Penyakit',
+                        data: bencanaNonAlam,
+                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        fill: true,
+                    },
+                    {
+                        label: 'Bencana Sosial',
+                        data: bencanaSosial,
+                        borderColor: 'rgb(54, 162, 235)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        fill: true,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                    },
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+    </script>
+</body>
+</html>
