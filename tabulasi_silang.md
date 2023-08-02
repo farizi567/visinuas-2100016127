@@ -2,6 +2,7 @@
 1. Buka Google Sheets dan buat spreadsheet baru.
 2. Klik menu "Extensions" -> "Apps Script" untuk membuka editor Google Apps Script.
 3. Di dalam editor, Anda dapat mulai menulis kode untuk membuat tabulasi silang.
+   
 script
 ```
 function typeAndYear() {
